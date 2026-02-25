@@ -1,49 +1,38 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  const [theme, setTheme] = useState<string | null>(null);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle(
-      "dark",
-      savedTheme === "dark"
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!theme) return;
-    localStorage.setItem("theme", theme);
-    document.documentElement.classList.toggle(
-      "dark",
-      theme === "dark"
-    );
-  }, [theme]);
-
-  if (!theme) return null; // prevents hydration flash
-
   return (
-    <footer className="py-12 border-t border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="relative py-20 border-t border-neutral-800 bg-neutral-950">
+      
+      {/* Subtle top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-blue-500/5 blur-[120px] pointer-events-none" />
 
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          © 2025 Abhishek Kumar Singh
-        </p>
+      <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
 
-        <button
-          onClick={() =>
-            setTheme(theme === "dark" ? "light" : "dark")
-          }
-          className="px-4 py-2 rounded-full 
-                     border border-neutral-300 dark:border-neutral-700
-                     text-gray-800 dark:text-gray-200
-                     hover:bg-neutral-100 dark:hover:bg-neutral-800
-                     transition"
+        {/* Left */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-sm text-neutral-400"
         >
-          {theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
-        </button>
+          © 2025 Abhishek Kumar Singh
+        </motion.p>
+
+        {/* Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-xs text-neutral-500 tracking-wider uppercase"
+        >
+          Built with Next.js • Tailwind • Framer Motion
+        </motion.div>
+
       </div>
     </footer>
   );

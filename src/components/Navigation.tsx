@@ -1,48 +1,66 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Linkedin, Github, Youtube } from "lucide-react";
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
+      setScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-slate-950/95 backdrop-blur-md border-b border-slate-700' : 'bg-transparent'
+        scrolled
+          ? "bg-black/80 backdrop-blur-md border-b border-neutral-800"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-width-container flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
+        >
           AKS
         </Link>
 
-        <div className="hidden md:flex gap-8">
-          {['about', 'skills', 'experience', 'projects', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="capitalize text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-200"
-            >
-              {item}
-            </button>
-          ))}
+        {/* Social Icons */}
+        <div className="flex items-center gap-6 text-neutral-400">
+          <a
+            href="https://linkedin.com/in/YOUR_LINKEDIN"
+            target="_blank"
+            className="hover:text-white hover:scale-110 transition duration-200"
+          >
+            <Linkedin size={20} />
+          </a>
+
+          <a
+            href="https://github.com/YOUR_GITHUB"
+            target="_blank"
+            className="hover:text-white hover:scale-110 transition duration-200"
+          >
+            <Github size={20} />
+          </a>
+
+          <a
+            href="https://youtube.com/YOUR_CHANNEL"
+            target="_blank"
+            className="hover:text-white hover:scale-110 transition duration-200"
+          >
+            <Youtube size={20} />
+          </a>
         </div>
       </div>
     </nav>
-  )
+  );
 }

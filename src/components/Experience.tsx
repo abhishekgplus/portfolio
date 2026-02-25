@@ -1,148 +1,150 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+type Role = {
+  title: string;
+  company: string;
+  location: string;
+  duration: string;
+  bullets: string[];
+};
+
+const roles: Role[] = [
+  {
+    title: "Director – Wealth Management Technology",
+    company: "Morgan Stanley",
+    location: "Bengaluru, India",
+    duration: "Jan 2025 – Present",
+    bullets: [
+      "Leading the Apigee Hybrid Platform Engineering function across 600+ nodes on GCP (Anthos) and OPDK infrastructure.",
+      "Driving SRE transformation with Error Budgets and refined SLI/SLO frameworks sustaining 99.99% availability.",
+      "Managing lifecycle of 10,000+ API Proxies and 20,000+ SharedFlows supporting global wealth platforms.",
+      "Overseeing capacity planning and disaster recovery to ensure resilience against regional failures.",
+      "Collaborating with global stakeholders and security architects to define API governance standards.",
+      "Reduced BAU toil through self-service enablement and platform automation.",
+      "Recipient of 'Put Clients First' Award (Q1 2025) for platform stability excellence."
+    ],
+  },
+  {
+    title: "Manager – Apigee Platform Engineering",
+    company: "Morgan Stanley",
+    location: "Bengaluru, India",
+    duration: "Jan 2023 – Dec 2024",
+    bullets: [
+      "Architected one of the firm’s largest API migrations (10k+ Proxies, 20k+ SharedFlows) to hybrid infrastructure.",
+      "Developed custom automation (Grunt/Shell) ensuring zero downtime and 100% asset integrity during cutovers.",
+      "Designed 'Hydrator' — event-driven security framework auto-rotating IDP credentials.",
+      "Engineered a 'Rolling Restart' self-healing bot preventing cascading failures.",
+      "Reduced BAU toil by 70% via self-service developer platform.",
+      "Built Real-Time Farm Beacon (RFB) — unified observability dashboard across clusters."
+    ],
+  },
+  {
+    title: "Senior Associate – Platform Automation",
+    company: "Morgan Stanley",
+    location: "Bengaluru, India",
+    duration: "Jan 2021 – Jan 2023",
+    bullets: [
+      "Designed proprietary Certificate Lifecycle Management (CLM) bot auto-renewing 25,000+ SSL certificates.",
+      "Reduced Risk & Control Management workload by 80%, saving thousands of engineering hours annually.",
+      "Received GRIT Award (Grassroots Innovation in Technology) for improving platform security posture."
+    ],
+  },
+  {
+    title: "Associate Consultant",
+    company: "Capgemini",
+    location: "Bengaluru, India",
+    duration: "Mar 2019 – Jan 2021",
+    bullets: [
+      "Managed middleware (JBoss, WebSphere, Apache) for Honeywell logistics applications ensuring 24/7 uptime.",
+      "Developed Python/Shell automation reducing maintenance windows by 60%.",
+    ],
+  },
+  {
+    title: "Senior Analyst",
+    company: "Capgemini",
+    location: "Bengaluru, India",
+    duration: "Mar 2018 – Mar 2019",
+    bullets: [
+      "Managed critical P1/P2 incidents for distributed production systems meeting strict SLAs.",
+      "Recognized as 'Highest Incident Resolver' for account excellence."
+    ],
+  },
+  {
+    title: "Analyst",
+    company: "Capgemini",
+    location: "Bengaluru, India",
+    duration: "Apr 2017 – Mar 2018",
+    bullets: [
+      "Supported middleware technologies including SSL, clustering, and load balancing (NetScaler).",
+      "Awarded Spot Award (3x) for customer obsession and technical excellence."
+    ],
+  }
+];
+
 export default function Experience() {
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="relative py-24">
       <div className="max-w-6xl mx-auto px-6">
-
-        {/* Section Title */}
+        
         <h2 className="text-3xl font-bold mb-16">
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Professional Experience
           </span>
         </h2>
 
-        {/* Timeline Wrapper */}
-        <div className="relative border-l border-neutral-800 pl-10 space-y-14">
+        <div className="relative pl-12 space-y-16">
+          
+          {/* Vertical Line */}
+          <div className="absolute left-3 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/40 via-neutral-700 to-transparent" />
 
-          <ExperienceCard
-            role="Director – Wealth Management Technology"
-            company="Morgan Stanley • Bengaluru, India"
-            duration="Jan 2025 – Present"
-            points={[
-              "Leading global Apigee Hybrid platform across GCP (Anthos) & OPDK infrastructure.",
-              "Orchestrating 600+ nodes across multi-region clusters.",
-              "Sustaining 99.99% availability for critical wealth management services.",
-              "Driving SRE transformation with SLI/SLO frameworks & error budgets.",
-              "Managing 10,000+ API Proxies & 20,000+ SharedFlows lifecycle.",
-              "Collaborating with global security architects & stakeholders for governance.",
-              "Recognized with 'Put Clients First' Award (Q1 2025)."
-            ]}
-          />
+          {roles.map((role, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className="relative"
+            >
+              {/* Timeline Dot */}
+              <div className="absolute -left-[18px] top-3 flex items-center justify-center">
+                <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-blue-500 shadow-lg shadow-blue-500/40"></span>
+              </div>
 
-          <ExperienceCard
-            role="Manager – Apigee Platform Engineering"
-            company="Morgan Stanley • Bengaluru, India"
-            duration="Jan 2023 – Dec 2024"
-            points={[
-              "Architected migration of 10,000+ APIs & 20,000+ SharedFlows to hybrid infrastructure.",
-              "Built automation ensuring zero downtime cutovers.",
-              "Designed 'Hydrator' event-driven security framework for IDP credential rotation.",
-              "Engineered rolling restart bot preventing cascading failures.",
-              "Reduced BAU toil by 70% via self-service developer platform.",
-              "Built Real-Time Farm Beacon unified observability dashboard."
-            ]}
-          />
+              <div className="relative rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-8 hover:border-blue-500/40 transition-all duration-300">
+                
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">
+                      {role.title}
+                    </h3>
+                    <p className="text-sm text-neutral-400 mt-1">
+                      {role.company} • {role.location}
+                    </p>
+                  </div>
+                  <span className="text-sm text-neutral-500 whitespace-nowrap">
+                    {role.duration}
+                  </span>
+                </div>
 
-          <ExperienceCard
-            role="Senior Associate – Platform Automation"
-            company="Morgan Stanley • Bengaluru, India"
-            duration="Jan 2021 – Jan 2023"
-            points={[
-              "Designed Certificate Lifecycle Management bot for 25,000+ SSL certificates.",
-              "Reduced Risk & Control Management manual workload by 80%.",
-              "Eliminated expiry-based outages via automation.",
-              "Awarded GRIT Award for platform security innovation."
-            ]}
-          />
+                {/* Bullets */}
+                <ul className="space-y-3 text-neutral-400 text-sm leading-relaxed">
+                  {role.bullets.map((bullet, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="text-blue-500 mt-[2px]">•</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
 
-          <ExperienceCard
-            role="Associate Consultant"
-            company="Capgemini • Bengaluru, India"
-            duration="Mar 2019 – Jan 2021"
-            points={[
-              "Managed middleware stack (JBoss, WebSphere, Apache) for Honeywell.",
-              "Ensured 24/7 availability of enterprise logistics systems.",
-              "Built automation reducing maintenance windows by 60%."
-            ]}
-          />
-
-          <ExperienceCard
-            role="Senior Analyst"
-            company="Capgemini • Bengaluru, India"
-            duration="Mar 2018 – Mar 2019"
-            points={[
-              "Managed critical P1/P2 distributed system incidents.",
-              "Consistently met SLA targets across enterprise accounts.",
-              "Recognized as 'Highest Incident Resolver'."
-            ]}
-          />
-
-          <ExperienceCard
-            role="Analyst"
-            company="Capgemini • Bengaluru, India"
-            duration="Apr 2017 – Mar 2018"
-            points={[
-              "Supported middleware technologies & SSL configurations.",
-              "Configured clustering & load balancing (NetScaler).",
-              "Awarded Spot Award (3x) for technical excellence."
-            ]}
-          />
-
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-/* ================= EXPERIENCE CARD ================= */
-
-function ExperienceCard({
-  role,
-  company,
-  duration,
-  points,
-}: {
-  role: string;
-  company: string;
-  duration: string;
-  points: string[];
-}) {
-  return (
-    <div className="relative group">
-
-      {/* Timeline Dot */}
-      <div className="absolute -left-[18px] top-2 w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/40" />
-
-      {/* Card */}
-      <div className="bg-neutral-900/60 backdrop-blur-sm 
-                      border border-neutral-800 
-                      rounded-2xl p-8
-                      hover:border-blue-500/40
-                      transition-all duration-300">
-
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-5">
-          <div>
-            <h3 className="text-xl font-semibold text-white">
-              {role}
-            </h3>
-            <p className="text-sm text-neutral-400 mt-1">
-              {company}
-            </p>
-          </div>
-
-          <span className="text-sm text-neutral-500 whitespace-nowrap">
-            {duration}
-          </span>
-        </div>
-
-        {/* Points */}
-        <ul className="space-y-2 text-neutral-400 leading-relaxed text-sm list-disc list-inside">
-          {points.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
-
-      </div>
-    </div>
   );
 }
