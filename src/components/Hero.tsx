@@ -1,63 +1,62 @@
+"use client";
+
 import Image from "next/image";
 import { FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] flex items-center px-6 py-20">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center w-full">
+    <section className="relative min-h-[92vh] flex items-center px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center w-full">
         
-        {/* LEFT CONTENT */}
-        <div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-            Abhishek Kumar Singh
-          </h1>
+        {/* ===== LEFT CONTENT ===== */}
+        <div className="space-y-8">
 
-          <h2 className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-            Director – Wealth Management Technology
-          </h2>
+          {/* Name */}
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Abhishek Kumar Singh
+              </span>
+            </h1>
 
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl">
-            Engineering leader with 8+ years of experience architecting 
-            mission-critical distributed platforms across Apigee Hybrid 
-            (Anthos/GKE) and OPDK infrastructure. Managing 600+ nodes powering 
-            10,000+ APIs globally with 99.99% availability.
+            <p className="text-lg text-neutral-400">
+              Director – Wealth Management Technology
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="text-neutral-400 leading-relaxed max-w-xl text-[15px]">
+            Engineering leader architecting mission-critical distributed
+            platforms across Apigee Hybrid (Anthos/GKE) and OPDK
+            infrastructure. Managing 600+ nodes powering 10,000+ APIs globally
+            with 99.99% availability.
           </p>
 
-          {/* Metrics */}
-          <div className="flex gap-10 mb-10">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                600+
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-500">
-                Global Nodes
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                10,000+
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-500">
-                API Proxies
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                99.99%
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-500">
-                Availability
-              </p>
-            </div>
+          {/* Metrics (Refined + tighter) */}
+          <div className="flex flex-wrap gap-12 pt-4">
+            {[
+              { value: "600+", label: "Global Nodes" },
+              { value: "10,000+", label: "API Proxies" },
+              { value: "99.99%", label: "Availability" },
+            ].map((metric, index) => (
+              <div key={index} className="space-y-1">
+                <h3 className="text-3xl font-semibold text-white tracking-tight">
+                  {metric.value}
+                </h3>
+                <p className="text-xs uppercase tracking-wider text-neutral-500">
+                  {metric.label}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-4 pt-4">
             <a
               href="/Abhishek_Singh_CV.pdf"
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition font-medium shadow-sm"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 
+                         hover:opacity-90 transition-all duration-300 
+                         text-white font-medium shadow-lg shadow-blue-500/20"
             >
               Download CV
             </a>
@@ -66,22 +65,21 @@ export default function Hero() {
               href="https://www.linkedin.com/in/aksingh14/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-gray-300 dark:border-gray-700 
-                         text-gray-800 dark:text-gray-200 
-                         hover:bg-gray-100 dark:hover:bg-neutral-800 
-                         rounded-xl transition font-medium"
+              className="px-6 py-3 rounded-xl border border-neutral-700 
+                         hover:border-blue-500 hover:bg-neutral-900 
+                         transition-all duration-300 font-medium text-neutral-200"
             >
               Connect on LinkedIn
             </a>
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-6 text-2xl text-gray-500 dark:text-gray-400">
+          <div className="flex gap-6 pt-2 text-xl text-neutral-500">
             <a
               href="https://www.linkedin.com/in/aksingh14/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-600 transition"
+              className="hover:text-blue-500 transition"
             >
               <FaLinkedin />
             </a>
@@ -90,7 +88,7 @@ export default function Hero() {
               href="https://github.com/abhishekgplus"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-900 dark:hover:text-white transition"
+              className="hover:text-white transition"
             >
               <FaGithub />
             </a>
@@ -106,14 +104,19 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="flex justify-center md:justify-end">
+        {/* ===== RIGHT IMAGE WITH GLOW ===== */}
+        <div className="relative flex justify-center md:justify-end">
+          
+          {/* Glow behind image */}
+          <div className="absolute w-[420px] h-[420px] bg-blue-500/20 blur-[120px] rounded-full" />
+
           <Image
             src="/profile.jpg"
             alt="Abhishek Kumar Singh"
-            width={360}
-            height={360}
-            className="rounded-3xl shadow-xl"
+            width={380}
+            height={380}
+            priority
+            className="relative rounded-3xl border border-neutral-800 shadow-2xl"
           />
         </div>
       </div>

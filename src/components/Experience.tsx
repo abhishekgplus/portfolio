@@ -1,13 +1,18 @@
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 section-divider">
+    <section id="experience" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-14">
-          Professional Experience
+        {/* Section Title */}
+        <h2 className="text-3xl font-bold mb-16">
+          <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Professional Experience
+          </span>
         </h2>
 
-        <div className="space-y-12">
+        {/* Timeline Wrapper */}
+        <div className="relative border-l border-neutral-800 pl-10 space-y-14">
+
           <ExperienceCard
             role="Director – Wealth Management Technology"
             company="Morgan Stanley • Bengaluru, India"
@@ -29,11 +34,11 @@ export default function Experience() {
             duration="Jan 2023 – Dec 2024"
             points={[
               "Architected migration of 10,000+ APIs & 20,000+ SharedFlows to hybrid infrastructure.",
-              "Built automation (Grunt/Shell) ensuring zero downtime cutovers.",
+              "Built automation ensuring zero downtime cutovers.",
               "Designed 'Hydrator' event-driven security framework for IDP credential rotation.",
               "Engineered rolling restart bot preventing cascading failures.",
-              "Reduced BAU toil by 70% through self-service developer platform.",
-              "Built Real-Time Farm Beacon (RFB) unified observability dashboard."
+              "Reduced BAU toil by 70% via self-service developer platform.",
+              "Built Real-Time Farm Beacon unified observability dashboard."
             ]}
           />
 
@@ -45,7 +50,7 @@ export default function Experience() {
               "Designed Certificate Lifecycle Management bot for 25,000+ SSL certificates.",
               "Reduced Risk & Control Management manual workload by 80%.",
               "Eliminated expiry-based outages via automation.",
-              "Awarded GRIT Award for innovation in platform security."
+              "Awarded GRIT Award for platform security innovation."
             ]}
           />
 
@@ -55,8 +60,8 @@ export default function Experience() {
             duration="Mar 2019 – Jan 2021"
             points={[
               "Managed middleware stack (JBoss, WebSphere, Apache) for Honeywell.",
-              "Ensured 24/7 availability of logistics & enterprise applications.",
-              "Built Python/Shell automation reducing maintenance windows by 60%."
+              "Ensured 24/7 availability of enterprise logistics systems.",
+              "Built automation reducing maintenance windows by 60%."
             ]}
           />
 
@@ -65,7 +70,7 @@ export default function Experience() {
             company="Capgemini • Bengaluru, India"
             duration="Mar 2018 – Mar 2019"
             points={[
-              "Managed critical P1/P2 production incidents for distributed systems.",
+              "Managed critical P1/P2 distributed system incidents.",
               "Consistently met SLA targets across enterprise accounts.",
               "Recognized as 'Highest Incident Resolver'."
             ]}
@@ -78,11 +83,11 @@ export default function Experience() {
             points={[
               "Supported middleware technologies & SSL configurations.",
               "Configured clustering & load balancing (NetScaler).",
-              "Awarded Spot Award (3x) for technical excellence & customer impact."
+              "Awarded Spot Award (3x) for technical excellence."
             ]}
           />
-        </div>
 
+        </div>
       </div>
     </section>
   );
@@ -102,36 +107,42 @@ function ExperienceCard({
   points: string[];
 }) {
   return (
-    <div
-      className="bg-white dark:bg-neutral-900 
-                 border border-neutral-200 dark:border-neutral-800 
-                 rounded-2xl p-8 
-                 hover:shadow-lg hover:border-neutral-300 
-                 dark:hover:border-neutral-700 
-                 transition duration-300"
-    >
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-5 gap-3">
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            {role}
-          </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            {company}
-          </p>
+    <div className="relative group">
+
+      {/* Timeline Dot */}
+      <div className="absolute -left-[18px] top-2 w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/40" />
+
+      {/* Card */}
+      <div className="bg-neutral-900/60 backdrop-blur-sm 
+                      border border-neutral-800 
+                      rounded-2xl p-8
+                      hover:border-blue-500/40
+                      transition-all duration-300">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-5">
+          <div>
+            <h3 className="text-xl font-semibold text-white">
+              {role}
+            </h3>
+            <p className="text-sm text-neutral-400 mt-1">
+              {company}
+            </p>
+          </div>
+
+          <span className="text-sm text-neutral-500 whitespace-nowrap">
+            {duration}
+          </span>
         </div>
 
-        <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap">
-          {duration}
-        </span>
-      </div>
+        {/* Points */}
+        <ul className="space-y-2 text-neutral-400 leading-relaxed text-sm list-disc list-inside">
+          {points.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
 
-      {/* Bullet Points */}
-      <ul className="space-y-2 text-gray-700 dark:text-gray-400 leading-relaxed list-disc list-inside">
-        {points.map((point, index) => (
-          <li key={index}>{point}</li>
-        ))}
-      </ul>
+      </div>
     </div>
   );
 }

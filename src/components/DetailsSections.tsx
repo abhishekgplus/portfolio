@@ -1,137 +1,126 @@
 export default function DetailsSections() {
   return (
-    <section className="py-20 section-divider">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-24">
+      <div className="max-w-6xl mx-auto px-6 space-y-28">
 
         {/* ================= SKILLS ================= */}
-        <div id="skills" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Key Skills
-          </h2>
+        <SectionTitle>Key Skills</SectionTitle>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <SkillCard title="Cloud & Platform">
-              GCP (Anthos, GKE), Apigee Hybrid, OPDK, Azure Integration
-            </SkillCard>
+        <div id="skills" className="grid md:grid-cols-3 gap-8">
+          <SkillCard title="Cloud & Platform">
+            GCP (Anthos, GKE), Apigee Hybrid, OPDK, Azure Integration
+          </SkillCard>
 
-            <SkillCard title="Containerization">
-              Kubernetes, Docker, Helm, KEDA, Istio, ASM, Ingress Controllers
-            </SkillCard>
+          <SkillCard title="Containerization">
+            Kubernetes, Docker, Helm, KEDA, Istio, ASM, Ingress Controllers
+          </SkillCard>
 
-            <SkillCard title="DevOps & Automation">
-              Terraform, Ansible, GitOps (ArgoCD), CI/CD, Shell, Python, Grunt
-            </SkillCard>
+          <SkillCard title="DevOps & Automation">
+            Terraform, Ansible, GitOps (ArgoCD), CI/CD, Shell, Python
+          </SkillCard>
 
-            <SkillCard title="Observability & SRE">
-              SLI/SLO, Error Budgets, Prometheus, Grafana, Loki, Splunk, Dynatrace
-            </SkillCard>
+          <SkillCard title="Observability & SRE">
+            SLI/SLO, Error Budgets, Prometheus, Grafana, Loki, Splunk, Dynatrace
+          </SkillCard>
 
-            <SkillCard title="Security">
-              OAuth2, OIDC, JWT, mTLS, HashiCorp Vault, Azure AD, PingFederate
-            </SkillCard>
+          <SkillCard title="Security">
+            OAuth2, OIDC, JWT, mTLS, Vault, Azure AD, PingFederate
+          </SkillCard>
 
-            <SkillCard title="Leadership">
-              Technical Strategy, Incident Command, Hiring, Mentorship, FinOps
-            </SkillCard>
-          </div>
+          <SkillCard title="Leadership">
+            Technical Strategy, Incident Command, Hiring, Mentorship, FinOps
+          </SkillCard>
         </div>
 
         {/* ================= LEADERSHIP ================= */}
-        <div id="leadership" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Leadership & Engineering Culture
-          </h2>
+        <div id="leadership">
+          <SectionTitle>Leadership & Engineering Culture</SectionTitle>
 
-          <div className="space-y-6">
-            <InfoBlock title="Team Building">
-              Proven ability to build and retain high-performing engineering teams.
-              Implemented structured mentorship programs accelerating promotions
-              from junior to senior engineering roles.
-            </InfoBlock>
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
+            <InfoCard title="Team Building">
+              Built and retained high-performing engineering teams.
+              Structured mentorship programs accelerating promotions.
+            </InfoCard>
 
-            <InfoBlock title="Operational Excellence">
-              Championed the “You Build It, You Run It” philosophy, enabling
-              product teams with observability, automation, and ownership of
-              production services.
-            </InfoBlock>
+            <InfoCard title="Operational Excellence">
+              Championed “You Build It, You Run It” culture with
+              observability, automation, and production ownership.
+            </InfoCard>
 
-            <InfoBlock title="Innovation Culture">
-              Established internal Hackathons and Tech Talks to foster knowledge
-              sharing and experimentation with GenAI, automation, and serverless systems.
-            </InfoBlock>
+            <InfoCard title="Innovation Culture">
+              Established internal hackathons and tech talks
+              fostering experimentation with GenAI and automation.
+            </InfoCard>
           </div>
         </div>
 
         {/* ================= INITIATIVES ================= */}
-        <div id="initiatives" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Strategic Technical Initiatives
-          </h2>
+        <div id="initiatives">
+          <SectionTitle>Strategic Technical Initiatives</SectionTitle>
 
-          <div className="space-y-6">
-            <InfoBlock title="Supervision AI Compliance Tool | GenAI, LLM">
-              Built an enterprise compliance tool using LLMs to analyze client
-              transcripts and automatically flag regulatory risks.
-            </InfoBlock>
+          <div className="grid md:grid-cols-2 gap-8 mt-10">
+            <InfoCard title="Supervision AI Compliance Tool">
+              Enterprise GenAI system analyzing transcripts to
+              automatically flag regulatory risk signals.
+            </InfoCard>
 
-            <InfoBlock title="Automated Jira Creator Bot | OpenAI Gateway">
-              Developed a chatbot that parses natural language to auto-create
-              Jira tickets, reducing ticket handling time by 50%.
-            </InfoBlock>
+            <InfoCard title="Automated Jira Creator Bot">
+              NLP-powered workflow bot reducing ticket handling
+              time by 50% across engineering teams.
+            </InfoCard>
 
-            <InfoBlock title="RCM Bulk Change Review | Automation">
-              Engineered a bulk-processing tool for Risk & Control Management
-              change validation, removing release bottlenecks.
-            </InfoBlock>
+            <InfoCard title="RCM Bulk Change Review">
+              Automation framework eliminating manual release bottlenecks.
+            </InfoCard>
 
-            <InfoBlock title="Serverless Autoscaling | KEDA, Kubernetes">
-              Designed a KEDA-based custom scaler to auto-scale workloads based
-              on queue depth, optimizing infrastructure cost and utilization.
-            </InfoBlock>
+            <InfoCard title="Serverless Autoscaling with KEDA">
+              Custom scaler architecture optimizing infrastructure
+              cost based on queue depth signals.
+            </InfoCard>
           </div>
         </div>
 
         {/* ================= AWARDS ================= */}
-        <div id="awards" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Awards & Achievements
-          </h2>
+        <div id="awards">
+          <SectionTitle>Awards & Achievements</SectionTitle>
 
-          <div className="card-base p-8">
-            <ul className="space-y-4 text-gray-700 dark:text-gray-400 list-disc list-inside">
+          <div className="glass-card p-8 mt-10">
+            <ul className="space-y-3 text-sm text-neutral-400">
               <li>
-                <strong className="text-gray-900 dark:text-gray-100">
+                <span className="text-white font-semibold">
                   Put Clients First Award (2025)
-                </strong> – Morgan Stanley
+                </span>{" "}
+                – Morgan Stanley
               </li>
               <li>
-                <strong className="text-gray-900 dark:text-gray-100">
+                <span className="text-white font-semibold">
                   GRIT Award (2022)
-                </strong> – Innovation in Technology
+                </span>{" "}
+                – Innovation in Technology
               </li>
               <li>
-                <strong className="text-gray-900 dark:text-gray-100">
+                <span className="text-white font-semibold">
                   Spot Award (3x)
-                </strong> – Capgemini
+                </span>{" "}
+                – Capgemini
               </li>
               <li>
-                <strong className="text-gray-900 dark:text-gray-100">
+                <span className="text-white font-semibold">
                   Highest Incident Resolver
-                </strong> – Capgemini
+                </span>{" "}
+                – Capgemini
               </li>
             </ul>
           </div>
         </div>
 
         {/* ================= EDUCATION ================= */}
-        <div id="education" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Education
-          </h2>
+        <div id="education">
+          <SectionTitle>Education</SectionTitle>
 
-          <div className="card-base p-8">
-            <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
-              <span className="text-gray-900 dark:text-gray-100 font-semibold">
+          <div className="glass-card p-8 mt-10">
+            <p className="text-neutral-400 text-sm leading-relaxed">
+              <span className="text-white font-semibold">
                 Bachelor of Technology in Electronics & Communication
               </span>
               <br />
@@ -144,29 +133,26 @@ export default function DetailsSections() {
 
         {/* ================= CERTIFICATIONS ================= */}
         <div id="certifications">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
-            Certifications
-          </h2>
+          <SectionTitle>Certifications</SectionTitle>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-10">
             {[
-              "Architecting & Installing Apigee Hybrid API Platform (Google Cloud)",
+              "Apigee Hybrid Architecture (GCP)",
               "Google Cloud Foundations",
-              "Fundamentals of Docker & Kubernetes",
+              "Docker & Kubernetes",
               "GitHub Actions & GitOps",
-              "Getting Started with Prometheus",
+              "Prometheus Monitoring",
               "Agentic AI Fundamentals",
-              "Preparing Organization for AI Agents",
-              "Kubernetes Deep Dive (Pods, Services, YAML)"
+              "AI Agents for Enterprises",
+              "Kubernetes Deep Dive"
             ].map((cert, index) => (
               <span
                 key={index}
-                className="px-5 py-2 rounded-full text-sm 
-                           bg-neutral-100 dark:bg-neutral-800 
-                           text-gray-800 dark:text-gray-300 
-                           border border-neutral-200 dark:border-neutral-700 
-                           hover:border-neutral-400 dark:hover:border-neutral-500 
-                           transition"
+                className="px-4 py-2 text-xs rounded-full 
+                           bg-neutral-900 border border-neutral-800 
+                           text-neutral-400 
+                           hover:border-blue-500/40 
+                           transition-all duration-300"
               >
                 {cert}
               </span>
@@ -181,26 +167,30 @@ export default function DetailsSections() {
 
 /* ================= Reusable Components ================= */
 
+function SectionTitle({ children }: any) {
+  return (
+    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      {children}
+    </h2>
+  );
+}
+
 function SkillCard({ title, children }: any) {
   return (
-    <div className="card-base p-8">
-      <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        {title}
-      </h3>
-      <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
+    <div className="glass-card p-8 hover:border-blue-500/40 transition-all duration-300">
+      <h3 className="text-white font-semibold mb-4">{title}</h3>
+      <p className="text-sm text-neutral-400 leading-relaxed">
         {children}
       </p>
     </div>
   );
 }
 
-function InfoBlock({ title, children }: any) {
+function InfoCard({ title, children }: any) {
   return (
-    <div className="card-base p-8">
-      <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
-        {title}
-      </h3>
-      <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
+    <div className="glass-card p-8 hover:border-purple-500/40 transition-all duration-300">
+      <h3 className="text-white font-semibold mb-3">{title}</h3>
+      <p className="text-sm text-neutral-400 leading-relaxed">
         {children}
       </p>
     </div>
