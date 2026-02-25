@@ -1,0 +1,64 @@
+const fs = require('fs');
+const path = require('path');
+
+// 1. Define the correct CSS content
+const cssContent = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 2, 6, 23;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-50 antialiased;
+    background: radial-gradient(circle at top center, #1e293b 0%, #020617 100%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl 
+           transition-all duration-300 hover:border-blue-500/50 hover:bg-slate-900/60;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400;
+  }
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold 
+           rounded-lg transition-all active:scale-95 shadow-lg shadow-blue-500/20;
+  }
+}`;
+
+// 2. Define the correct PostCSS config (Standard CommonJS)
+const postCssContent = `module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};`;
+
+// 3. Write the files
+const cssPath = path.join(__dirname, 'src', 'app', 'globals.css');
+const postCssPath = path.join(__dirname, 'postcss.config.js');
+
+// Delete old config if it exists to avoid conflicts
+const oldPostCss = path.join(__dirname, 'postcss.config.mjs');
+if (fs.existsSync(oldPostCss)) fs.unlinkSync(oldPostCss);
+
+console.log('REPAIRING FILES...');
+
+try {
+    fs.writeFileSync(cssPath, cssContent);
+    console.log('✅ src/app/globals.css has been repaired.');
+    
+    fs.writeFileSync(postCssPath, postCssContent);
+    console.log('✅ postcss.config.js has been repaired.');
+    
+    console.log('SUCCESS! You can now run the git commands.');
+} catch (err) {
+    console.error('❌ Error writing files:', err);
+}
