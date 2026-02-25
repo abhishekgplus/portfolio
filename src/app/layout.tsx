@@ -5,7 +5,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Abhishek Kumar Singh | Engineering Director",
-  description: "Director – Wealth Management Technology | Platform Architect",
+  description:
+    "Director – Wealth Management Technology | Platform Architect",
 };
 
 export default function RootLayout({
@@ -15,7 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#0A0A0A] text-white`}>
+      <body
+        className={`${inter.className}
+          bg-neutral-50 text-neutral-900
+          dark:bg-neutral-950 dark:text-neutral-100
+          antialiased transition-colors duration-300`}
+      >
         {children}
       </body>
     </html>
